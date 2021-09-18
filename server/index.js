@@ -81,7 +81,8 @@ app.get('/api/users/auth', auth, (req,res) => {
     image: req.user.image
    })
 })
-  
+
+//내 입장에서야 데이터베이스에 회원이 많고 작동되는지 실험할려면 생각해야하는 토큰이 많지만 실제 페이지를 운영하면 특정 아이피에서 접속한 홈페이지 쿠키에는 토큰이 1개 밖에 없다 왜냐하면 로그인을 해야만 토큰 1개가 그 아이피 홈페이지 쿠키에 저장되기 때문이다.
 app.get('/api/users/logout', auth, (req, res) => {
 
   User.findOneAndUpdate({_id: req.user._id},
