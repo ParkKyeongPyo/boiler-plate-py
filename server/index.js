@@ -24,6 +24,12 @@ app.get('/', (req, res) => {
   res.send('Hello World! 즐기자 인생뭐있냐 한번사는거')
 }) 
 
+app.get('/api/hello', (req,res) => {
+
+  res.send("안녕하세요~")
+
+})
+
 app.post('/register', (req,res) => {
   
   //회원 가입 할때 필요한 정보들을 client에서 가져오면
