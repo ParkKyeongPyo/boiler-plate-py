@@ -30,12 +30,13 @@ app.get('/api/hello', (req,res) => {
 
 })
 
-app.post('/register', (req,res) => {
+app.post('/api/users/register', (req,res) => {
   
   //회원 가입 할때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터 베이스에 넣어준다.
   const user = new User(req.body) //왜 이런 코드를 넣어야하지? json내용을 객체에 담아야 해서?
   user.save((err, doc) => {
+    console.log(err)
     if (err) return res.json({ success: false, err})
     return res.status(200).json({
       success: true
@@ -43,7 +44,7 @@ app.post('/register', (req,res) => {
   })
 })
 
-app.post('/login', (req, res) =>{
+app.post('/api/users/login', (req, res) =>{
 
   //요청된 이메일을 데이터베이스에서 찾는다.
   User.findOne({email: req.body.email}, (err, user) => {
